@@ -1,6 +1,6 @@
 # Pawlished
 
-[🪪🍻 ¿Quiénes son JA^2? 🍻🪪](https://github.com/Intro-CompuMovil/Pawlished.wiki.git)
+[🪪🍻 ¿Quiénes son JA^2? 🍻🪪](https://github.com/Intro-CompuMovil/Pawlished/wiki)
 
 ### Objetivo 
 
