@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".RegistroClienteActivity">
+    tools:context=".RegistroPeluqueriaActivity">
 
     <!-- Campo de nombre -->
     <EditText
@@ -15,24 +15,33 @@
         android:hint="Nombre"
         android:layout_marginBottom="16dp" />
 
-    <!-- Campo de correo electrónico -->
+    <!-- Campo de dirección -->
     <EditText
-        android:id="@+id/correoEditText"
+        android:id="@+id/direccionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo Electrónico"
+        android:hint="Dirección"
         android:layout_below="@id/nombreEditText"
         android:layout_marginBottom="16dp" />
 
-    <!-- Campo de contraseña -->
+    <!-- Campo de descripción -->
     <EditText
-        android:id="@+id/contrasenaEditText"
+        android:id="@+id/descripcionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:layout_below="@id/correoEditText"
+        android:hint="Descripción"
+        android:layout_below="@id/direccionEditText"
         android:layout_marginBottom="16dp" />
+
+    <!-- ImageView para mostrar la foto tomada -->
+    <ImageView
+        android:id="@+id/peluqueriaImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descripcionEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone" />
 
     <!-- Botón para tomar foto -->
     <Button
@@ -40,27 +49,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tomar Foto"
-        android:layout_below="@id/contrasenaEditText"
+        android:layout_below="@id/peluqueriaImageView"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp" />
 
-    <!-- ImageView para mostrar la foto tomada -->
-    <ImageView
-        android:id="@+id/clienteImageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tomarFotoButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:visibility="gone" />
-
     <!-- Botón de registro -->
     <Button
-        android:id="@+id/registrarClienteButton"
+        android:id="@+id/registroButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registrarse"
-        android:layout_below="@id/clienteImageView"
+        android:layout_below="@id/tomarFotoButton"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
