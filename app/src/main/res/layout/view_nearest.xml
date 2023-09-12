@@ -10,9 +10,13 @@
     <ListView
         android:id="@+id/peluqueriasListView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:choiceMode="singleChoice" />
+        android:layout_height="268dp" />
+
+    <ImageView
+        android:id="@+id/mapImageView"
+        android:layout_width="match_parent"
+        android:layout_height="247dp"
+        android:src="@drawable/sample_map_image" />
 
     <Button
         android:id="@+id/volverMainButton"
