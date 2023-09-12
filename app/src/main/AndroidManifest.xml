@@ -29,7 +29,6 @@
         <activity android:name=".ViewStateActivity" />
         <activity android:name=".ViewNearestActivity" />
 
-        <!-- Agrega otras actividades aquí si es necesario -->
 
     </application>
 </manifest>
