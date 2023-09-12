@@ -1,11 +1,11 @@
 package com.example.pawlished
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import android.content.Intent
-import android.widget.Button
 
 class ViewNearestActivity : AppCompatActivity() {
 
@@ -27,6 +27,20 @@ class ViewNearestActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        listView.setOnItemClickListener { _, _, position, _ ->
+            // Obtén la peluquería seleccionada
+            val selectedPeluqueria = peluquerias[position]
+
+            // Obtén los servicios seleccionados que pasaste desde SolicitarCorteActivity
+            val serviciosSeleccionados = intent.getStringArrayListExtra("servicios_seleccionados")
+
+            // Iniciar ViewStateActivity y pasar los datos
+            val intent = Intent(this, ViewStateActivity::class.java)
+            intent.putStringArrayListExtra("servicios_seleccionados", serviciosSeleccionados)
+            intent.putExtra("selected_peluqueria", selectedPeluqueria)
+            startActivity(intent)
         }
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class ViewStateActivity : AppCompatActivity() {
@@ -13,17 +14,25 @@ class ViewStateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_state)
 
+        // Obtén los servicios seleccionados y la peluquería seleccionada
         val serviciosSeleccionados = intent.getStringArrayListExtra("servicios_seleccionados")
+        val selectedPeluqueria = intent.getStringExtra("selected_peluqueria")
+
+        // Convierte la lista de servicios seleccionados a mutable
         val serviciosMutable = serviciosSeleccionados?.toMutableList() ?: mutableListOf()
-        val volverMainButton: Button = findViewById(R.id.volverMainButton)
-        val listView: ListView = findViewById(R.id.serviciosRealizadosListView)
+
+        // Configura la lista de servicios seleccionados
+        val serviciosListView: ListView = findViewById(R.id.serviciosRealizadosListView)
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_checked, serviciosMutable)
-        listView.adapter = adapter
+        serviciosListView.adapter = adapter
 
-        listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+        serviciosListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
 
-        // se marcan los servicios realizados
+        // Muestra la peluquería seleccionada
+        val peluqueriaLabel = findViewById<TextView>(R.id.peluqueriaLabel)
+        peluqueriaLabel.text = "Peluquería Seleccionada:\n$selectedPeluqueria"
 
+        val volverMainButton: Button = findViewById(R.id.volverMainButton)
         volverMainButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

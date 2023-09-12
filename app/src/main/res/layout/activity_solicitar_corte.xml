@@ -24,42 +24,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deslanado" />
-
     <CheckBox
-        android:id="@+id/bañoEspecialCheckBox"
+        android:id="@+id/BañoEspecialCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Baño Especial" />
-
     <CheckBox
         android:id="@+id/uñasCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Uñas" />
-
     <CheckBox
-        android:id="@+id/cuidadoOidosCheckBox"
+        android:id="@+id/cuidadoOidosChexkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cuidado de Oídos" />
-
+        android:text="Cuidado Oidos" />
     <CheckBox
         android:id="@+id/accesoriosCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Accesorios" />
-
     <CheckBox
         android:id="@+id/fraganciasCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fragancias" />
 
+
     <Button
         android:id="@+id/solicitarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Solicitar" />
+
     <Button
         android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
