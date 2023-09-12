@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".VerSolicitudesActivity">
+
+    <ListView
+        android:id="@+id/solicitudesListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/iniciarSesionClienteButton"
+        android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Cliente" />
+        android:text="Volver a la actividad principal" />
 
     <Button
-        android:id="@+id/iniciarSesionPeluqueriaButton"
+        android:id="@+id/verSolicitudesAceptadasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Peluquería" />
+        android:text="Ver Solicitudes Aceptadas" />
 
 </LinearLayout>

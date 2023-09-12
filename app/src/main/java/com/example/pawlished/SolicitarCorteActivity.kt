@@ -1,17 +1,17 @@
 package com.example.pawlished
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.Toast
-import android.content.Intent
 
 class SolicitarCorteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.solicitar_corte)
+        setContentView(R.layout.activity_solicitar_corte)
 
         val volverMainButton: Button = findViewById(R.id.volverMainButton)
         val solicitarButton: Button = findViewById(R.id.solicitarButton)
@@ -30,7 +30,8 @@ class SolicitarCorteActivity : AppCompatActivity() {
             val serviciosSeleccionados = obtenerServiciosSeleccionados(serviciosCheckboxList)
 
             if (serviciosSeleccionados.isNotEmpty()) {
-                val intent = Intent(this, ViewStateActivity::class.java)
+                // Darve: implementar la solicitud de permiso y mostrar el mapa  mostrar, tambien  implementar la lógica para buscar y mostrar peluquerías cercanas
+                val intent = Intent(this, ViewNearestActivity::class.java)
                 intent.putStringArrayListExtra("servicios_seleccionados", serviciosSeleccionados)
                 startActivity(intent)
             } else {
@@ -39,7 +40,7 @@ class SolicitarCorteActivity : AppCompatActivity() {
         }
 
         volverMainButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityCliente::class.java)
             startActivity(intent)
             finish()
         }

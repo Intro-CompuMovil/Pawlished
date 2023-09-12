@@ -5,20 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="16dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivityPeluqueria">
 
     <Button
-        android:id="@+id/iniciarSesionClienteButton"
+        android:id="@+id/verSolicitudesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Cliente" />
+        android:text="Ver Solicitudes" />
 
     <Button
-        android:id="@+id/iniciarSesionPeluqueriaButton"
+        android:id="@+id/verSolicitudesAceptadasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Peluquería" />
+        android:text="Ver Solicitudes Aceptadas" />
 
 </LinearLayout>

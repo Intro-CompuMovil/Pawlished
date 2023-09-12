@@ -1,9 +1,11 @@
 package com.example.pawlished
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,21 +13,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val solicitarCorteButton: Button = findViewById(R.id.solicitarCorteButton)
-        solicitarCorteButton.setOnClickListener {
-            val intent = Intent(this, SolicitarCorteActivity::class.java)
+        val iniciarSesionClienteButton: Button = findViewById(R.id.iniciarSesionClienteButton)
+        iniciarSesionClienteButton.setOnClickListener {
+            val intent = Intent(this, LoginClienteActivity::class.java)
             startActivity(intent)
         }
 
-        val viewStateButton: Button = findViewById(R.id.viewStateButton)
-        viewStateButton.setOnClickListener {
-            val intent = Intent(this, ViewStateActivity::class.java)
-            startActivity(intent)
-        }
-
-        val viewNearestButton: Button = findViewById(R.id.viewNearestButton)
-        viewNearestButton.setOnClickListener {
-            val intent = Intent(this, ViewNearestActivity::class.java)
+        val iniciarSesionPeluqueriaButton: Button = findViewById(R.id.iniciarSesionPeluqueriaButton)
+        iniciarSesionPeluqueriaButton.setOnClickListener {
+            val intent = Intent(this, LoginPeluqueriaActivity::class.java)
             startActivity(intent)
         }
     }

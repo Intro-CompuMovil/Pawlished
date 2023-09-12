@@ -16,6 +16,33 @@
         android:theme="@style/Theme.Pawlished"
         tools:targetApi="31">
         <activity
+            android:name=".RegistroClienteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerSolicitudesAceptadasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerSolicitudesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerPeluqueriasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VerEstadoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityPeluqueria"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityCliente"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPeluqueriaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginClienteActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,11 +51,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".SolicitarCorteActivity" />
         <activity android:name=".ViewStateActivity" />
         <activity android:name=".ViewNearestActivity" />
-
-
     </application>
+
 </manifest>
