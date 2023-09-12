@@ -23,6 +23,9 @@
         android:theme="@style/Theme.Pawlished"
         tools:targetApi="34">
         <activity
+            android:name=".ServiciosAceptadosAdapter"
+            android:exported="false" />
+        <activity
             android:name=".RegistroPeluqueriaActivity"
             android:exported="false" />
         <activity

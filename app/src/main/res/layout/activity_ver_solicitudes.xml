@@ -8,9 +8,10 @@
     tools:context=".VerSolicitudesActivity">
 
     <ListView
-        android:id="@+id/solicitudesListView"
+        android:id="@+id/serviciosSolicitadosListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:choiceMode="multipleChoice" />
 
     <Button
         android:id="@+id/volverMainButton"
@@ -19,7 +20,7 @@
         android:text="Volver a la actividad principal" />
 
     <Button
-        android:id="@+id/verSolicitudesAceptadasButton"
+        android:id="@+id/verAceptadasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver Solicitudes Aceptadas" />

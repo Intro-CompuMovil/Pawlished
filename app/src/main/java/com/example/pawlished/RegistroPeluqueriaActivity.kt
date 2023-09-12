@@ -13,6 +13,9 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import android.widget.Toast
+
+
 
 class RegistroPeluqueriaActivity : AppCompatActivity() {
 
@@ -61,6 +64,9 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
         registroButton.setOnClickListener {
             // Aquí puedes implementar la lógica para guardar los datos y la foto de la peluquería
             // en tu base de datos o sistema de registro.
+            // Después de un registro exitoso:
+            Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+
         }
     }
 

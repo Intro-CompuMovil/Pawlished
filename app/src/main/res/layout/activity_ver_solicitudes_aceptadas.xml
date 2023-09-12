@@ -8,22 +8,21 @@
     tools:context=".VerSolicitudesAceptadasActivity">
 
     <ListView
-        android:id="@+id/solicitudesAceptadasListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/precioEditText"
+        android:id="@+id/serviciosAceptadosListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Precio del servicio" />
+        android:layout_weight="1" />
 
+    <!-- Aquí puedes agregar un espacio o una línea divisoria si lo deseas -->
+
+    <!-- Agrega un botón para guardar los precios -->
     <Button
-        android:id="@+id/guardarPrecioButton"
+        android:id="@+id/guardarPreciosButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar Precio" />
+        android:text="Guardar Precios" />
 
+    <!-- Agrega un botón para volver a la actividad principal -->
     <Button
         android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
