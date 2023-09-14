@@ -15,10 +15,8 @@ class LoginPeluqueriaActivity : AppCompatActivity() {
         val registrarPeluqueriaButton: Button = findViewById(R.id.registrarPeluqueriaButton)
 
         iniciarSesionPeluqueriaButton.setOnClickListener {
-            // Aquí añades la lógica para iniciar sesión como peluquería
-            // Por ejemplo, verificar las credenciales en tu base de datos o sistema de autenticación
 
-            // Si las credenciales son válidas, puedes iniciar la siguiente actividad
+            // Si las credenciales son válidas,  iniciar la siguiente actividad
             val intent = Intent(this, MainActivityPeluqueria::class.java)
             startActivity(intent)
         }

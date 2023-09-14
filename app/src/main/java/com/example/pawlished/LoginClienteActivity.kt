@@ -15,10 +15,8 @@ class LoginClienteActivity : AppCompatActivity() {
         val registrarClienteButton: Button = findViewById(R.id.registrarClienteButton)
 
         iniciarSesionButton.setOnClickListener {
-            // Aquí añades la lógica para iniciar sesión como cliente
-            // Por ejemplo, verificar las credenciales en tu base de datos o sistema de autenticación
 
-            // Si las credenciales son válidas, puedes iniciar la siguiente actividad
+            // Si las credenciales son válidas, se puede iniciar la siguiente actividad
             val intent = Intent(this, MainActivityCliente::class.java)
             startActivity(intent)
         }

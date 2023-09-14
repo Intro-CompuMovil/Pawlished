@@ -42,7 +42,7 @@ class RegistroClienteActivity : AppCompatActivity() {
         }
 
         registrarClienteButton.setOnClickListener {
-            // Aquí puedes implementar la lógica para registrar al cliente en tu sistema
+            // Aquí s implementar la lógica para registrar al cliente en tu sistema
             val nombre = nombreEditText.text.toString()
             // También puedes guardar la imagen del cliente en tu sistema
             // clienteImageView.drawable.toBitmap() te proporciona el bitmap de la imagen

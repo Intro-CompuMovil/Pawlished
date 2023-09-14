@@ -28,7 +28,7 @@ class VerSolicitudesAceptadasActivity : AppCompatActivity() {
         guardarPreciosButton.setOnClickListener {
             // Guardar los precios propuestos aquí
             val preciosPropuestos = adapter.getPreciosPropuestos()
-            // Puedes procesar los precios propuestos aquí, por ejemplo, enviarlos a un servidor
+            // se pueden procesar los precios propuestos aquí
         }
     }
 }
