@@ -5,62 +5,88 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".SolicitarCorteActivity">
+    tools:context=".SolicitarCorteActivity"
+    android:background="@color/azul">
 
     <CheckBox
         android:id="@+id/bañoCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Baño" />
+        android:text="Baño"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
 
     <CheckBox
         android:id="@+id/corteCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Corte" />
+        android:text="Corte"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
 
     <CheckBox
         android:id="@+id/deslanadoCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deslanado" />
+        android:text="Deslanado"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
+
     <CheckBox
         android:id="@+id/BañoEspecialCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Baño Especial" />
+        android:text="Baño Especial"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
+
     <CheckBox
         android:id="@+id/uñasCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Uñas" />
+        android:text="Uñas"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
+
     <CheckBox
         android:id="@+id/cuidadoOidosChexkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cuidado Oidos" />
+        android:text="Cuidado Oidos"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
+
     <CheckBox
         android:id="@+id/accesoriosCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Accesorios" />
+        android:text="Accesorios"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
+
     <CheckBox
         android:id="@+id/fraganciasCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragancias" />
+        android:text="Fragancias"
+        android:textColor="@color/blanco"
+        android:buttonTint="@color/blanco"/>
 
 
     <Button
         android:id="@+id/solicitarButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Solicitar" />
+        android:text="Solicitar"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
     <Button
         android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver a la actividad principal" />
+        android:text="Volver a la actividad principal"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
 </LinearLayout>

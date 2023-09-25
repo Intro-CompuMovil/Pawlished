@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".RegistroPeluqueriaActivity">
+    tools:context=".RegistroPeluqueriaActivity"
+    android:background="@color/verde_claro">
 
     <!-- Campo de nombre -->
     <EditText
@@ -13,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/naranja"/>
 
     <!-- Campo de dirección -->
     <EditText
@@ -22,7 +24,8 @@
         android:layout_height="wrap_content"
         android:hint="Dirección"
         android:layout_below="@id/nombreEditText"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/naranja"/>
 
     <!-- Campo de descripción -->
     <EditText
@@ -31,7 +34,8 @@
         android:layout_height="wrap_content"
         android:hint="Descripción"
         android:layout_below="@id/direccionEditText"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/naranja"/>
 
     <!-- ImageView para mostrar la foto tomada -->
     <ImageView
@@ -51,7 +55,9 @@
         android:text="Tomar Foto"
         android:layout_below="@id/peluqueriaImageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
     <!-- Botón de registro -->
     <Button
@@ -60,6 +66,8 @@
         android:layout_height="wrap_content"
         android:text="Registrarse"
         android:layout_below="@id/tomarFotoButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
 </RelativeLayout>

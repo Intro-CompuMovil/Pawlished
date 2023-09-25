@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".LoginPeluqueriaActivity">
+    tools:context=".LoginPeluqueriaActivity"
+    android:background="@color/verde_claro">
 
     <!-- Campos de inicio de sesión (por ejemplo, correo y contraseña) -->
     <EditText
@@ -13,27 +14,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="@color/naranja"
+        android:textColorHint="@color/naranja"/>
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/naranja"
+        android:textColorHint="@color/naranja"/>
 
     <!-- Botón para iniciar sesión como peluquería -->
     <Button
         android:id="@+id/iniciarSesionPeluqueriaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Peluquería" />
+        android:text="Iniciar Sesión como Peluquería"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
     <!-- Botón para registrarse como peluquería -->
     <Button
         android:id="@+id/registrarPeluqueriaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse como Peluquería" />
+        android:text="Registrarse como Peluquería"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
 </LinearLayout>

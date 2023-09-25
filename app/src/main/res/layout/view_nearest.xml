@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ViewNearestActivity">
+    tools:context=".ViewNearestActivity"
+    android:background="@color/azul">
 
     <ListView
         android:id="@+id/peluqueriasListView"
@@ -22,6 +25,9 @@
         android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver a la actividad principal" />
+        android:text="Volver a la actividad principal"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
+
 
 </LinearLayout>

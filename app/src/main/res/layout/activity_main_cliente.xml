@@ -6,24 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivityCliente">
+    tools:context=".MainActivityCliente"
+    android:background="@color/azul">
 
     <Button
         android:id="@+id/solicitarCorteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Solicitar Corte" />
+        android:text="Solicitar Corte"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
     <Button
         android:id="@+id/verEstadoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Estado de Servicios" />
+        android:text="Ver Estado de Servicios"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
     <Button
         android:id="@+id/verPeluqueriasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Peluquerías Cercanas" />
+        android:text="Ver Peluquerías Cercanas"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
 </LinearLayout>

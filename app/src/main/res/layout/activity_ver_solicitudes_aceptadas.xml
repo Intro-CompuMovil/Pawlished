@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".VerSolicitudesAceptadasActivity">
+    tools:context=".VerSolicitudesAceptadasActivity"
+    android:background="@color/verde_claro">
 
     <ListView
         android:id="@+id/serviciosAceptadosListView"
@@ -20,13 +21,17 @@
         android:id="@+id/guardarPreciosButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar Precios" />
+        android:text="Guardar Precios"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
     <!-- Agrega un botón para volver a la actividad principal -->
     <Button
         android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver a la actividad principal" />
+        android:text="Volver a la actividad principal"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
 </LinearLayout>

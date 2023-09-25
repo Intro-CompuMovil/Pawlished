@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".VerPeluqueriasActivity">
+    tools:context=".VerPeluqueriasActivity"
+    android:background="@color/azul">
 
     <ListView
         android:id="@+id/peluqueriasListView"

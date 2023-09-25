@@ -6,18 +6,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".MainActivityPeluqueria">
+    tools:context=".MainActivityPeluqueria"
+    android:background="@color/verde_claro">
 
     <Button
         android:id="@+id/verSolicitudesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Solicitudes" />
+        android:text="Ver Solicitudes"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
     <Button
         android:id="@+id/verSolicitudesAceptadasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Solicitudes Aceptadas" />
+        android:text="Ver Solicitudes Aceptadas"
+        android:backgroundTint="@color/naranja"
+        android:textColor="@color/verde_claro"/>
 
 </LinearLayout>

@@ -5,32 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".LoginClienteActivity">
+    tools:context=".LoginClienteActivity"
+    android:background="@color/azul">
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="@color/blanco"
+        android:textColorHint="@color/blanco"/>
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Contraseña"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="@color/blanco"
+        android:textColorHint="@color/blanco"/>
 
     <Button
         android:id="@+id/iniciarSesionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Cliente" />
+        android:text="Iniciar Sesión como Cliente"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
     <Button
         android:id="@+id/registrarClienteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse como Cliente" />
+        android:text="Registrarse como Cliente"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
 </LinearLayout>

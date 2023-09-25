@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".RegistroClienteActivity">
+    tools:context=".RegistroClienteActivity"
+    android:background="@color/azul">
 
     <!-- Campo de nombre -->
     <EditText
@@ -13,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Nombre"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/blanco"/>
 
     <!-- Campo de correo electrónico -->
     <EditText
@@ -22,7 +24,8 @@
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
         android:layout_below="@id/nombreEditText"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/blanco"/>
 
     <!-- Campo de contraseña -->
     <EditText
@@ -32,7 +35,8 @@
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:layout_below="@id/correoEditText"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/blanco"/>
 
     <!-- Botón para tomar foto -->
     <Button
@@ -42,7 +46,9 @@
         android:text="Tomar Foto"
         android:layout_below="@id/contrasenaEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
     <!-- ImageView para mostrar la foto tomada -->
     <ImageView
@@ -61,6 +67,8 @@
         android:layout_height="wrap_content"
         android:text="Registrarse"
         android:layout_below="@id/clienteImageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
 
 </RelativeLayout>

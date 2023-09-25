@@ -13,12 +13,14 @@
         android:id="@+id/iniciarSesionClienteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Cliente" />
+        android:text="Iniciar Sesión como Cliente"
+        android:backgroundTint="@color/azul"/>
 
     <Button
         android:id="@+id/iniciarSesionPeluqueriaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Peluquería" />
+        android:text="Iniciar Sesión como Peluquería"
+        android:backgroundTint="@color/azul"/>
 
 </LinearLayout>
