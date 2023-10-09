@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1080876647802",
+    "project_id": "pawlished-789f9",
+    "storage_bucket": "pawlished-789f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080876647802:android:d73f6c713607863d8ec2c3",
+        "android_client_info": {
+          "package_name": "com.example.pawlished"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpYDgSJ182H5f8PrVXQyNw9UkofyXMk2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -37,38 +37,67 @@
         android:layout_below="@id/correoEditText"
         android:layout_marginBottom="16dp"
         android:textColorHint="@color/blanco"/>
+    <!-- Campo telefono-->
+    <EditText
+        android:id="@+id/telefonoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="telefono"
+        android:layout_below="@id/contrasenaEditText"
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/blanco"/>
 
     <!-- Botón para tomar foto -->
+
+    <!-- ImageView para mostrar la foto tomada -->
+
     <Button
         android:id="@+id/tomarFotoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tomar Foto"
-        android:layout_below="@id/contrasenaEditText"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/telefonoEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="140dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/blanco"
-        android:textColor="@color/azul"/>
+        android:text="Tomar Foto"
+        android:textColor="@color/azul" />
 
-    <!-- ImageView para mostrar la foto tomada -->
+    <!-- Botón de registro -->
+
     <ImageView
         android:id="@+id/clienteImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tomarFotoButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:visibility="gone" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:visibility="visible" />
 
-    <!-- Botón de registro -->
     <Button
         android:id="@+id/registrarClienteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:layout_below="@id/clienteImageView"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="142dp"
+        android:layout_marginBottom="318dp"
         android:backgroundTint="@color/blanco"
-        android:textColor="@color/azul"/>
+        android:text="Registrarse"
+        android:textColor="@color/azul" />
+
+    <Button
+        android:id="@+id/elegirImagenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tomarFotoButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="110dp"
+        android:backgroundTint="@color/blanco"
+        android:onClick="onclick"
+        android:text="Imagen de la Galería"
+        android:textColor="@color/azul" />
+
 
 </RelativeLayout>

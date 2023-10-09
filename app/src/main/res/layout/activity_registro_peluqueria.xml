@@ -22,7 +22,7 @@
         android:id="@+id/direccionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Dirección"
+        android:hint="Correo electronico"
         android:layout_below="@id/nombreEditText"
         android:layout_marginBottom="16dp"
         android:textColorHint="@color/naranja"/>
@@ -32,42 +32,78 @@
         android:id="@+id/descripcionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción"
+        android:hint="Dirección"
         android:layout_below="@id/direccionEditText"
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/naranja"/>
+    <EditText
+        android:id="@+id/telefonoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Telefono"
+        android:layout_below="@id/descripcionEditText"
+        android:layout_marginBottom="16dp"
+        android:textColorHint="@color/naranja"/>
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cotraseña"
+        android:layout_below="@id/telefonoEditText"
         android:layout_marginBottom="16dp"
         android:textColorHint="@color/naranja"/>
 
     <!-- ImageView para mostrar la foto tomada -->
+
+    <!-- Botón para tomar foto -->
+
+    <!-- Botón de registro -->
+
     <ImageView
         android:id="@+id/peluqueriaImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/descripcionEditText"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="408dp"
         android:layout_marginBottom="16dp"
-        android:visibility="gone" />
+        android:visibility="visible" />
 
-    <!-- Botón para tomar foto -->
     <Button
         android:id="@+id/tomarFotoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tomar Foto"
-        android:layout_below="@id/peluqueriaImageView"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/telefonoEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="147dp"
+        android:layout_marginEnd="147dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/naranja"
-        android:textColor="@color/verde_claro"/>
+        android:text="Tomar Foto"
+        android:textColor="@color/verde_claro" />
 
-    <!-- Botón de registro -->
     <Button
         android:id="@+id/registroButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:layout_below="@id/tomarFotoButton"
-        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/nombreEditText"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="147dp"
         android:backgroundTint="@color/naranja"
-        android:textColor="@color/verde_claro"/>
+        android:text="Registrarse"
+        android:textColor="@color/verde_claro" />
+
+    <Button
+        android:id="@+id/elegirImagenButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tomarFotoButton"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="118dp"
+        android:backgroundTint="@color/naranja"
+        android:onClick="onclick"
+        android:text="Imagen de la Galería"
+        android:textColor="@color/verde_claro" />
 
 </RelativeLayout>

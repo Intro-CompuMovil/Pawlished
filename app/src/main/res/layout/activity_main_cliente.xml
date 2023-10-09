@@ -9,6 +9,15 @@
     tools:context=".MainActivityCliente"
     android:background="@color/azul">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextColor="@android:color/white"
+        android:backgroundTint="@color/azul"/>
+
     <Button
         android:id="@+id/solicitarCorteButton"
         android:layout_width="wrap_content"

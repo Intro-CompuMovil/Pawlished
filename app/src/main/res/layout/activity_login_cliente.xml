@@ -30,7 +30,7 @@
         android:id="@+id/iniciarSesionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión como Cliente"
+        android:text="Iniciar Sesión"
         android:backgroundTint="@color/blanco"
         android:textColor="@color/azul"/>
 
@@ -38,7 +38,7 @@
         android:id="@+id/registrarClienteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrarse como Cliente"
+        android:text="Registrarse"
         android:backgroundTint="@color/blanco"
         android:textColor="@color/azul"/>
 
