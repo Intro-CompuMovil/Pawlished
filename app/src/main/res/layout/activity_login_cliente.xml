@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".LoginClienteActivity"
-    android:background="@color/azul">
+    android:background="@color/blanco"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/bannerCli"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:paddingBottom="20dp"
+        android:src = "@drawable/banner"/>
+
+    <TextView
+        android:id="@+id/tituloCli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio sesión cliente"
+        android:textColor="@color/azul"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:paddingBottom="20dp"
+        android:layout_below="@id/bannerCli"/>
 
     <EditText
         android:id="@+id/emailEditText"
@@ -14,8 +35,9 @@
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
         android:inputType="textEmailAddress"
-        android:textColor="@color/blanco"
-        android:textColorHint="@color/blanco"/>
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:layout_below="@id/tituloCli"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -23,23 +45,35 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:textColor="@color/blanco"
-        android:textColorHint="@color/blanco"/>
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:layout_below="@id/emailEditText"/>
 
-    <Button
-        android:id="@+id/iniciarSesionButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión"
-        android:backgroundTint="@color/blanco"
-        android:textColor="@color/azul"/>
+        android:layout_below="@id/passwordEditText"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp">
 
-    <Button
-        android:id="@+id/registrarClienteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:backgroundTint="@color/blanco"
-        android:textColor="@color/azul"/>
+        <Button
+            android:id="@+id/iniciarSesionButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Sesión"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/blanco"
+            android:layout_marginRight="10dp"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/registrarClienteButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/blanco"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

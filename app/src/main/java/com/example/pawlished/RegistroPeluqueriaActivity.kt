@@ -41,10 +41,12 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registro_peluqueria)
 
         peluqueriaImageView = findViewById(R.id.peluqueriaImageView)
-        correoEditText = findViewById(R.id.direccionEditText)
+
+        correoEditText = findViewById(R.id.correoEditText)
         nombreEditText = findViewById(R.id.nombreEditText)
         telefonoEditText = findViewById(R.id.telefonoEditText)
         contraseñaEditText = findViewById(R.id.passwordEditText)
+
         tomarFotoButton = findViewById(R.id.tomarFotoButton)
         elegirImagenButton = findViewById(R.id.elegirImagenButton)
         registrarPeluqueriaButton = findViewById(R.id.registroButton)

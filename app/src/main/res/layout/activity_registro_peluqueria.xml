@@ -1,109 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".RegistroPeluqueriaActivity"
-    android:background="@color/verde_claro">
+    tools:context=".RegistroClienteActivity"
+    android:background="@color/blanco">
+
+    <ImageView
+        android:id="@+id/bannerClir"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:paddingBottom="10dp"
+        android:src = "@drawable/bannerp"/>
+
+    <TextView
+        android:id="@+id/tituloRCli"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Registro cliente"
+        android:textColor="@color/azul"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"
+        android:layout_below="@id/bannerClir"/>
 
     <!-- Campo de nombre -->
     <EditText
         android:id="@+id/nombreEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tituloRCli"
         android:hint="Nombre"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="@color/naranja"/>
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"/>
 
-    <!-- Campo de dirección -->
+    <!-- Campo de correo electrónico -->
     <EditText
-        android:id="@+id/direccionEditText"
+        android:id="@+id/correoEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Correo electronico"
+        android:hint="Correo Electrónico"
         android:layout_below="@id/nombreEditText"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="@color/naranja"/>
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"/>
 
-    <!-- Campo de descripción -->
+    <!-- Campo de contraseña -->
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:layout_below="@id/correoEditText"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"/>
+    <!-- Campo telefono-->
+    <EditText
+        android:id="@+id/telefonoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="telefono"
+        android:layout_below="@id/passwordEditText"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"/>
+
     <EditText
         android:id="@+id/descripcionEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Dirección"
-        android:layout_below="@id/direccionEditText"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="@color/naranja"/>
-    <EditText
-        android:id="@+id/telefonoEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Telefono"
-        android:layout_below="@id/descripcionEditText"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="@color/naranja"/>
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cotraseña"
         android:layout_below="@id/telefonoEditText"
         android:layout_marginBottom="16dp"
-        android:textColorHint="@color/naranja"/>
-
-    <!-- ImageView para mostrar la foto tomada -->
-
-    <!-- Botón para tomar foto -->
-
-    <!-- Botón de registro -->
+        android:textColorHint="@color/azul"/>
 
     <ImageView
         android:id="@+id/peluqueriaImageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/descripcionEditText"
-        android:layout_marginTop="408dp"
-        android:layout_marginBottom="16dp"
-        android:visibility="visible" />
+        android:src="@drawable/user"/>
 
-    <Button
-        android:id="@+id/tomarFotoButton"
+    <LinearLayout
+        android:id="@+id/linearLayoutRc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/telefonoEditText"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="147dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/naranja"
-        android:text="Tomar Foto"
-        android:textColor="@color/verde_claro" />
+        android:layout_below="@id/peluqueriaImageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/tomarFotoButton"
+            android:layout_width="180dp"
+            android:layout_marginRight="6dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/azul"
+            android:text="Camara"
+            android:textColor="@color/verde_claro" />
+
+        <Button
+            android:id="@+id/elegirImagenButton"
+            android:layout_width="180dp"
+            android:layout_marginLeft="6dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/azul"
+            android:text="Galería"
+            android:textColor="@color/verde_claro" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/registroButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/nombreEditText"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="330dp"
-        android:layout_marginEnd="147dp"
-        android:backgroundTint="@color/naranja"
+        android:backgroundTint="@color/azul"
         android:text="Registrarse"
-        android:textColor="@color/verde_claro" />
+        android:textColor="@color/blanco"
+        android:layout_below="@id/linearLayoutRc"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
 
-    <Button
-        android:id="@+id/elegirImagenButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tomarFotoButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="118dp"
-        android:backgroundTint="@color/naranja"
-        android:onClick="onclick"
-        android:text="Imagen de la Galería"
-        android:textColor="@color/verde_claro" />
 
 </RelativeLayout>

@@ -1,22 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".LoginPeluqueriaActivity"
-    android:background="@color/verde_claro">
 
-    <!-- Campos de inicio de sesión (por ejemplo, correo y contraseña) -->
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp"
+tools:context=".LoginPeluqueriaActivity"
+android:background="@color/blanco"
+android:gravity="center">
+
+    <ImageView
+        android:id="@+id/bannerPel"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:paddingBottom="20dp"
+        android:src = "@drawable/bannerp"/>
+
+    <TextView
+        android:id="@+id/tituloPel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicio sesión peluquería"
+        android:textColor="@color/azul"
+        android:textSize="22dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:paddingBottom="20dp"
+        android:layout_below="@id/bannerPel"/>
+
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Correo Electrónico"
         android:inputType="textEmailAddress"
-        android:textColor="@color/naranja"
-        android:textColorHint="@color/naranja"/>
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:layout_below="@id/tituloPel"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -24,26 +46,35 @@
         android:layout_height="wrap_content"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:textColor="@color/naranja"
-        android:textColorHint="@color/naranja"/>
+        android:textColor="@color/azul"
+        android:textColorHint="@color/azul"
+        android:layout_below="@id/emailEditText"/>
 
-
-    <!-- Botón para iniciar sesión como peluquería -->
-    <Button
-        android:id="@+id/iniciarSesionPeluqueriaButton"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Iniciar Sesión "
-        android:backgroundTint="@color/naranja"
-        android:textColor="@color/verde_claro"/>
+        android:layout_below="@id/passwordEditText"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp">
 
-    <!-- Botón para registrarse como peluquería -->
-    <Button
-        android:id="@+id/registrarPeluqueriaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Registrarse"
-        android:backgroundTint="@color/naranja"
-        android:textColor="@color/verde_claro"/>
+        <Button
+            android:id="@+id/iniciarSesionPeluqueriaButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Iniciar Sesión"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/verde_claro"
+            android:layout_marginRight="10dp"/>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/registrarPeluqueriaButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Registrarse"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/verde_claro"
+            android:layout_marginLeft="10dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
