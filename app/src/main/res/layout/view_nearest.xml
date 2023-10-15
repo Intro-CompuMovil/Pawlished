@@ -15,17 +15,20 @@
         android:layout_width="match_parent"
         android:layout_height="268dp" />
 
-    <ImageView
-        android:id="@+id/mapImageView"
-        android:layout_width="match_parent"
-        android:layout_height="247dp"
-        android:src="@drawable/sample_map_image" />
 
     <Button
         android:id="@+id/volverMainButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volver a la actividad principal"
+        android:backgroundTint="@color/blanco"
+        android:textColor="@color/azul"/>
+
+    <Button
+        android:id="@+id/mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar En El Mapa"
         android:backgroundTint="@color/blanco"
         android:textColor="@color/azul"/>
 

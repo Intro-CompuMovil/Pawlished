@@ -21,6 +21,7 @@ class ViewNearestActivity : AppCompatActivity() {
         setContentView(R.layout.view_nearest)
 
         val volverMainButton: Button = findViewById(R.id.volverMainButton)
+        val mapa:Button = findViewById(R.id.mapa)
         val peluquerias = arrayOf(
             "el mundo de la mascota\nDirección: Calle Falsa 123\nHorario: 9:00 AM - 6:00 PM",
             "tu perro feliz\nDirección: Avenida Imaginaria 456\nHorario: 10:00 AM - 7:00 PM",
@@ -43,6 +44,11 @@ class ViewNearestActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_REQUEST_CODE
             )
+        }
+
+        mapa.setOnClickListener {
+            val intent = Intent(this, MapaActivity::class.java)
+            startActivity(intent)
         }
 
         volverMainButton.setOnClickListener {
