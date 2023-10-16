@@ -141,8 +141,9 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
                    //Poner marcadores de las tiendas que
-                }
 
+
+                }
             }
 
         } else {
