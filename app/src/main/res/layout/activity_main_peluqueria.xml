@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:padding="16dp"
     tools:context=".MainActivityPeluqueria"
-    android:background="@color/verde_claro">
+    android:background="@color/blanco">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@android:color/white"
-        android:backgroundTint="@color/verde_claro"/>
+        app:titleTextColor="@color/azul"
+        android:backgroundTint="@color/blanco"/>
 
-    <Button
-        android:id="@+id/verSolicitudesButton"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Solicitudes"
-        android:backgroundTint="@color/naranja"
-        android:textColor="@color/verde_claro"/>
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/verSolicitudesAceptadasButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ver Solicitudes Aceptadas"
-        android:backgroundTint="@color/naranja"
-        android:textColor="@color/verde_claro"/>
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="220dp"
+            android:src="@drawable/bannerp"/>
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido al menu principal"
+            android:textColor="@color/azul"
+            android:textSize="22dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:paddingBottom="20dp"/>
+
+        <Button
+            android:id="@+id/verSolicitudesButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Ver Solicitudes"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/verde_claro"/>
+
+        <Button
+            android:id="@+id/verSolicitudesAceptadasButton"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Ver Solicitudes Aceptadas"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/verde_claro"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

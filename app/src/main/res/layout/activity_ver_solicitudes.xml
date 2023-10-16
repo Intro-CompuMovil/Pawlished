@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".VerSolicitudesActivity"
-    android:background="@color/verde_claro">
+    android:background="@color/blanco"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tituloVS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:text="Ver solicitudes"
+        android:textColor="@color/azul"
+        android:textSize="22dp"
+        android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/serviciosSolicitadosListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:choiceMode="multipleChoice" />
-
-    <Button
-        android:id="@+id/volverMainButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volver a la actividad principal" />
+        android:layout_height="450dp"
+        android:choiceMode="multipleChoice"
+        android:paddingBottom="20dp"/>
 
     <Button
         android:id="@+id/verAceptadasButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Ver Solicitudes Aceptadas" />
+        android:text="Ver Solicitudes Aceptadas"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/verde_claro"/>
+
+    <Button
+        android:id="@+id/volverMainButton"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Volver al menu principal"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/verde_claro"/>
 
 </LinearLayout>

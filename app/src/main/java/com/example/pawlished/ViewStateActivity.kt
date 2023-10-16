@@ -30,11 +30,11 @@ class ViewStateActivity : AppCompatActivity() {
 
         // Muestra la peluquería seleccionada
         val peluqueriaLabel = findViewById<TextView>(R.id.peluqueriaLabel)
-        peluqueriaLabel.text = "Peluquería Seleccionada:\n$selectedPeluqueria"
+        peluqueriaLabel.text = "$selectedPeluqueria"
 
         val volverMainButton: Button = findViewById(R.id.volverMainButton)
         volverMainButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityCliente::class.java)
             startActivity(intent)
             finish()
         }

@@ -36,5 +36,11 @@ class VerPeluqueriasActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        val mapa: Button = findViewById(R.id.mapa)
+        mapa.setOnClickListener {
+            val intent = Intent(this, MapaActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

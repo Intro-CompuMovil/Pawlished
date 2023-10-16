@@ -1,36 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".ViewStateActivity"
-    android:background="@color/azul">
+    android:background="@color/blanco"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tituloVS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:text="Peluquerias seleccionada"
+        android:textColor="@color/azul"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/peluqueriaLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Peluquería Seleccionada:"
         android:textSize="16sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"
-        android:textColor="@color/blanco"/>
+        android:textColor="@color/azul"
+        android:layout_below="@id/tituloVS"/>
 
     <ListView
         android:id="@+id/serviciosRealizadosListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="490dp"
         android:layout_below="@+id/peluqueriaLabel"
-        android:layout_marginTop="16dp" />
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"/>
 
     <Button
         android:id="@+id/volverMainButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Volver a la actividad principal"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/serviciosRealizadosListView"
-        android:layout_marginTop="16dp" />
+        android:text="Volver al menu principal"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/blanco"
+        android:layout_below="@id/serviciosRealizadosListView"
+        android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

@@ -23,7 +23,7 @@ class VerSolicitudesActivity : AppCompatActivity() {
         listView.adapter = adapter
 
         volverMainButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityPeluqueria::class.java)
             startActivity(intent)
             finish()
         }

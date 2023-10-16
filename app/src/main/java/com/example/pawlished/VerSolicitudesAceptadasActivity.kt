@@ -16,6 +16,8 @@ class VerSolicitudesAceptadasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_solicitudes_aceptadas)
 
+        val volverMainButton: Button = findViewById(R.id.volverMainButton)
+
         serviciosAceptadosListView = findViewById(R.id.serviciosAceptadosListView)
         guardarPreciosButton = findViewById(R.id.guardarPreciosButton)
 
@@ -24,6 +26,12 @@ class VerSolicitudesAceptadasActivity : AppCompatActivity() {
         // Crear un adaptador personalizado para mostrar los servicios con precios editables
         val adapter = ServiciosAceptadosAdapter(this, serviciosSeleccionados)
         serviciosAceptadosListView.adapter = adapter
+
+        volverMainButton.setOnClickListener {
+            val intent = Intent(this, MainActivityPeluqueria::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         guardarPreciosButton.setOnClickListener {
             // Guardar los precios propuestos aquí

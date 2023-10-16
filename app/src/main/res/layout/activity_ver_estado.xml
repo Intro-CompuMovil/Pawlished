@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".VerEstadoActivity"
-    android:background="@color/azul" >
+    android:background="@color/blanco"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tituloVE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:text="Estado de servicios"
+        android:textColor="@color/azul"
+        android:textSize="22dp"
+        android:textStyle="bold"/>
 
     <ListView
         android:id="@+id/serviciosRealizadosListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:choiceMode="multipleChoice" />
+        android:layout_height="500dp"
+        android:paddingBottom="20dp"
+        android:choiceMode="multipleChoice"/>
 
     <Button
         android:id="@+id/volverMainButton"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:text="Volver a la actividad principal" />
+        android:text="Volver al menu principal"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/blanco"
+        android:layout_below="@id/solicitarButton"/>
 
 </LinearLayout>

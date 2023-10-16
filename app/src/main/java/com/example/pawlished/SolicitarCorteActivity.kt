@@ -42,7 +42,7 @@ class SolicitarCorteActivity : AppCompatActivity() {
         }
 
         volverMainButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityCliente::class.java)
             startActivity(intent)
             finish()
         }

@@ -88,19 +88,11 @@ class LoginClienteActivity : AppCompatActivity() {
                                 // Manejar errores de autenticación
                                 Toast.makeText(
                                     this@LoginClienteActivity,
-                                    "${contraseña} Inicio de sesión fallido: ${exception.message}",
+                                    "Inicio de sesión fallido. Verifica tus credenciales.",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                         }
-                    }
-                    .addOnFailureListener { exception ->
-                        // Capturar y mostrar errores de autenticación específicos
-                        Toast.makeText(
-                            this@LoginClienteActivity,
-                            "Inicio de sesión fallido: ${exception.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
             } else {
                 Toast.makeText(
