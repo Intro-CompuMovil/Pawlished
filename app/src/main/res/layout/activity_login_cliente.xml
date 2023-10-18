@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/bannerCli"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="220dp"
         android:paddingBottom="20dp"
         android:src = "@drawable/banner"/>
 
@@ -50,11 +50,13 @@
         android:layout_below="@id/emailEditText"/>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordEditText"
         android:layout_centerHorizontal="true"
-        android:paddingTop="20dp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
 
         <Button
             android:id="@+id/iniciarSesionButton"
@@ -75,5 +77,15 @@
             android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/volverMainButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Volver al inicio"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/blanco"
+        android:layout_below="@id/linearLayout"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

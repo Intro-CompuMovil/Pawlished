@@ -24,18 +24,10 @@
     <ListView
         android:id="@+id/peluqueriasListView"
         android:layout_width="match_parent"
-        android:layout_height="321dp"
+        android:layout_height="450dp"
         android:paddingBottom="20dp"
-        />
+        android:choiceMode="multipleChoice"/>
 
-    <Button
-        android:id="@+id/volverMainButton"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="Volver al menu principal"
-        android:backgroundTint="@color/azul"
-        android:textColor="@color/blanco"
-        android:layout_below="@id/solicitarButton"/>
     <Button
         android:id="@+id/mapa"
         android:layout_width="220dp"
@@ -44,5 +36,14 @@
         android:backgroundTint="@color/azul"
         android:textColor="@color/blanco"
         android:layout_below="@id/solicitarButton"/>
+
+    <Button
+        android:id="@+id/volverMainButton"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:text="Volver al menu principal"
+        android:backgroundTint="@color/azul"
+        android:textColor="@color/blanco"
+        android:layout_below="@id/mapa"/>
 
 </LinearLayout>

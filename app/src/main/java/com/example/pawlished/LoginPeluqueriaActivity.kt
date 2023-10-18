@@ -92,8 +92,16 @@ class LoginPeluqueriaActivity : AppCompatActivity() {
                 ).show()
             }
         }
+
         registrarPeluqueriaButton.setOnClickListener {
             val intent = Intent(this, RegistroPeluqueriaActivity::class.java)
+            startActivity(intent)
+        }
+
+        val boton_regresar = findViewById<Button>(R.id.volverMainButton)
+
+        boton_regresar.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
