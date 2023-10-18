@@ -5,6 +5,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Matrix
 import android.provider.MediaStore
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
@@ -155,10 +156,14 @@ class RegistroClienteActivity : AppCompatActivity() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_CAPTURE_REQUEST && resultCode == RESULT_OK) {
+        if (requestCode == IMAGE_CAPTURE_REQUEST && resultCode == RESULT_OK)
+        {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            clienteImageView.setImageBitmap(imageBitmap)
-        } else if (requestCode == IMAGE_PICK_REQUEST && resultCode == RESULT_OK) {
+            val rotatedBitmap = rotateImage(imageBitmap, 90f)
+            clienteImageView.setImageBitmap(rotatedBitmap)
+        }
+        else if (requestCode == IMAGE_PICK_REQUEST && resultCode == RESULT_OK)
+        {
             val selectedImageUri = data?.data
             clienteImageView.setImageURI(selectedImageUri)
         }
@@ -178,4 +183,12 @@ class RegistroClienteActivity : AppCompatActivity() {
         )
     }
 
+    private fun rotateImage(source: Bitmap?, angle: Float): Bitmap? {
+        if (source == null)
+            return null
+
+        val matrix = Matrix()
+        matrix.postRotate(angle)
+        return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
+    }
 }
