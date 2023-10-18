@@ -65,5 +65,10 @@ class ViewNearestActivity : AppCompatActivity() {
             intent.putExtra("selected_peluqueria", selectedPeluqueria)
             startActivity(intent)
         }
+        val mapa: Button = findViewById(R.id.mapa)
+        mapa.setOnClickListener {
+            val intent = Intent(this, MapaActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
