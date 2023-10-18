@@ -17,7 +17,7 @@ class MainActivityCliente : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_cliente)
         val solicitarCorteButton: Button = findViewById(R.id.solicitarCorteButton)
-        val verEstadoButton: Button = findViewById(R.id.verEstadoButton)
+
         val verPeluqueriasButton: Button = findViewById(R.id.verPeluqueriasButton)
         val toolbar= findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -27,10 +27,7 @@ class MainActivityCliente : AppCompatActivity() {
             startActivity(intent)
         }
 
-        verEstadoButton.setOnClickListener {
-            val intent = Intent(this, VerEstadoActivity::class.java)
-            startActivity(intent)
-        }
+
 
         verPeluqueriasButton.setOnClickListener {
             val intent = Intent(this, VerPeluqueriasActivity::class.java)

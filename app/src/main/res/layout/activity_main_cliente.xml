@@ -52,14 +52,6 @@
             android:textColor="@color/blanco"/>
 
         <Button
-            android:id="@+id/verEstadoButton"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:text="Ver Estado de Servicios"
-            android:backgroundTint="@color/azul"
-            android:textColor="@color/blanco"/>
-
-        <Button
             android:id="@+id/verPeluqueriasButton"
             android:layout_width="220dp"
             android:layout_height="wrap_content"

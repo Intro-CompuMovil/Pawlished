@@ -22,9 +22,9 @@ class ViewNearestActivity : AppCompatActivity() {
 
         val volverMainButton: Button = findViewById(R.id.volverMainButton)
         val peluquerias = arrayOf(
-            "el mundo de la mascota\nDirección: Calle Falsa 123\nHorario: 9:00 AM - 6:00 PM",
-            "tu perro feliz\nDirección: Avenida Imaginaria 456\nHorario: 10:00 AM - 7:00 PM",
-            "el gato felix \nDirección: Plaza Inexistente 789\nHorario: 8:00 AM - 5:00 PM"
+            "veterinaria la perilla \nDirección: Cra. 7 #126a-35\nHorario: 8:00 AM - 4:30 PM",
+            "La pelu \nDirección: Cra. 11a#119-16\nHorario: 7:00 AM - 7:00 PM",
+            "Nova vet+\nDirección: Cra.7c#125-45\nHorario: 9:00 AM - 5:00 PM"
         )
 
         val listView: ListView = findViewById(R.id.peluqueriasListView)
@@ -46,7 +46,7 @@ class ViewNearestActivity : AppCompatActivity() {
         }
 
         volverMainButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityCliente::class.java)
             startActivity(intent)
             finish()
         }
