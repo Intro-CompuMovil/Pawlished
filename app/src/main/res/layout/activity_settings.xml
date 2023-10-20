@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    tools:context=".RegistroClienteActivity"
+    tools:context=".SettingsActivity"
     android:background="@color/blanco">
 
     <ImageView
@@ -18,10 +18,10 @@
         android:src = "@drawable/banner"/>
 
     <TextView
-        android:id="@+id/tituloRCli"
+        android:id="@+id/tituloSCli"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registro cliente"
+        android:text="Ajuste de perfil"
         android:textColor="@color/azul"
         android:textSize="22dp"
         android:layout_centerHorizontal="true"
@@ -34,7 +34,7 @@
         android:id="@+id/nombreEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tituloRCli"
+        android:layout_below="@id/tituloSCli"
         android:hint="Nombre"
         android:layout_marginBottom="10dp"
         android:textColor="@color/azul"
@@ -74,7 +74,7 @@
         android:textColorHint="@color/azul"/>
 
     <ImageView
-        android:id="@+id/clienteImageView"
+        android:id="@+id/fotoPerfil"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
@@ -82,10 +82,10 @@
         android:src="@drawable/user"/>
 
     <LinearLayout
-        android:id="@+id/linearLayoutRc"
+        android:id="@+id/linearLayoutSc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/clienteImageView"
+        android:layout_below="@id/fotoPerfil"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp">
 
@@ -110,13 +110,13 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/registrarClienteButton"
+        android:id="@+id/actualizarClienteButton"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/azul"
-        android:text="Registrarse"
+        android:text="Guardar cambios"
         android:textColor="@color/blanco"
-        android:layout_below="@id/linearLayoutRc"
+        android:layout_below="@id/linearLayoutSc"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"/>
 

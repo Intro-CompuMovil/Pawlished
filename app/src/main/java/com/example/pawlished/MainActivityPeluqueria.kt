@@ -47,6 +47,11 @@ private lateinit var mAuth:FirebaseAuth
                 finish()
                 return true
             }
+            R.id.menu_settings -> {
+                val intent = Intent(this, SettingsActivityP::class.java)
+                startActivity(intent)
+                return true
+            }
             else -> return super.onOptionsItemSelected(item)
         }
     }

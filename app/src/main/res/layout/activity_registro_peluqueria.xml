@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:gravity="center"
     tools:context=".RegistroClienteActivity"
     android:background="@color/blanco">
 
@@ -66,7 +67,7 @@
         android:id="@+id/telefonoEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="telefono"
+        android:hint="Telefono"
         android:layout_below="@id/passwordEditText"
         android:layout_marginBottom="10dp"
         android:textColor="@color/azul"
@@ -123,7 +124,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/azul"
         android:text="Registrarse"
-        android:textColor="@color/blanco"
+        android:textColor="@color/verde_claro"
         android:layout_below="@id/linearLayoutRc"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true"/>

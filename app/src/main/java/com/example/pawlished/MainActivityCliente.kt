@@ -22,6 +22,7 @@ class MainActivityCliente : AppCompatActivity() {
         val toolbar= findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         mAuth = FirebaseAuth.getInstance()
+
         solicitarCorteButton.setOnClickListener {
             val intent = Intent(this, SolicitarCorteActivity::class.java)
             startActivity(intent)
@@ -49,6 +50,11 @@ class MainActivityCliente : AppCompatActivity() {
                 val intent = Intent(this, LoginClienteActivity::class.java)
                 startActivity(intent)
                 finish()
+                return true
+            }
+            R.id.menu_settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

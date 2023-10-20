@@ -22,11 +22,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pawlished"
         tools:targetApi="34">
-
+        <activity
+            android:name=".SettingsActivityP"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}"/>
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".MapaActivity"
