@@ -1,7 +1,6 @@
 package com.example.pawlished
 
 import android.Manifest
-
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -16,7 +15,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistroClienteActivity : AppCompatActivity() {
     companion object {
@@ -35,9 +34,8 @@ class RegistroClienteActivity : AppCompatActivity() {
     private lateinit var elegirImagenButton: Button
     private lateinit var registrarClienteButton: Button
 
-
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var mDatabase: FirebaseDatabase
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +45,10 @@ class RegistroClienteActivity : AppCompatActivity() {
         correoEditText = findViewById(R.id.correoEditText)
         nombreEditText = findViewById(R.id.nombreEditText)
         telefonoEditText = findViewById(R.id.telefonoEditText)
-        contraseñaEditText= findViewById(R.id.contrasenaEditText)
-        tomarFotoButton= findViewById(R.id.tomarFotoButton)
+        contraseñaEditText = findViewById(R.id.contrasenaEditText)
+        tomarFotoButton = findViewById(R.id.tomarFotoButton)
         elegirImagenButton = findViewById(R.id.elegirImagenButton)
         registrarClienteButton = findViewById(R.id.registrarClienteButton)
-
 
         tomarFotoButton.setOnClickListener {
             if (checkCameraPermission()) {
@@ -61,9 +58,8 @@ class RegistroClienteActivity : AppCompatActivity() {
             }
         }
 
-
         mAuth = FirebaseAuth.getInstance()
-        mDatabase = FirebaseDatabase.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         registrarClienteButton.setOnClickListener {
             // Obtener los datos del formulario de registro
@@ -72,40 +68,47 @@ class RegistroClienteActivity : AppCompatActivity() {
             val telefono = telefonoEditText.text.toString().trim()
             val contraseña = contraseñaEditText.text.toString()
 
-
             // Registrar al cliente en Firebase Authentication
             mAuth.createUserWithEmailAndPassword(correo, contraseña).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // El cliente se registró correctamente en Firebase Authentication
                     val clienteId = mAuth.currentUser?.uid
 
-                    // Crear un nodo para el cliente en la base de datos
-                    val clienteRef = clienteId?.let { it1 ->
-                        mDatabase.reference.child("clientes").child(
-                            it1
+                    // Crear un documento para el cliente en Firebase Firestore
+                    clienteId?.let {
+                        val clienteData = hashMapOf(
+                            "correo" to correo,
+                            "nombre" to nombre,
+                            "tipoUsuario" to "Cliente",
+                            "numeroTelefono" to telefono
                         )
-                    }
-                    val clienteData = HashMap<String, Any>()
-                    clienteData["correo"] = correo
-                    clienteData["nombre"] = nombre
-                    clienteData["tipoUsuario"] = "Cliente"
-                    clienteData["numeroTelefono"] = telefono
 
-                    // Guardar los datos del cliente en la base de datos
-                    if (clienteRef != null) {
-                        clienteRef.setValue(clienteData)
+                        db.collection("clientes")
+                            .document(it)
+                            .set(clienteData)
+                            .addOnSuccessListener {
+                                // Registro exitoso en Firestore
+                                // Redirigir al cliente a la actividad principal de clientes
+                                val intent = Intent(this, MainActivityCliente::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            .addOnFailureListener { e ->
+                                // Manejar errores de Firestore aquí
+                                Toast.makeText(
+                                    this@RegistroClienteActivity,
+                                    "Error al registrar en Firestore: $e",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                     }
-
-                    // Redirigir al cliente a la actividad principal de clientes
-                    val intent = Intent(this, MainActivityCliente::class.java)
-                    startActivity(intent)
-                    finish()
                 } else {
                     // Hubo un error al registrar al cliente en Firebase Authentication
                     // Manejar el error apropiadamente
                 }
             }
         }
+
         elegirImagenButton.setOnClickListener {
             // Crear un intent para abrir la galería de imágenes
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -117,14 +120,15 @@ class RegistroClienteActivity : AppCompatActivity() {
                 requestGalleryPermission()
             }
         }
-
     }
+
     private fun checkCameraPermission(): Boolean {
         return ContextCompat.checkSelfPermission(
             this,
             Manifest.permission.CAMERA
         ) == PackageManager.PERMISSION_GRANTED
     }
+
     private fun requestCameraPermission() {
         ActivityCompat.requestPermissions(
             this,
@@ -132,10 +136,12 @@ class RegistroClienteActivity : AppCompatActivity() {
             CAMERA_PERMISSION_REQUEST
         )
     }
+
     private fun launchCamera() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(intent, IMAGE_CAPTURE_REQUEST)
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -154,16 +160,14 @@ class RegistroClienteActivity : AppCompatActivity() {
             }
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_CAPTURE_REQUEST && resultCode == RESULT_OK)
-        {
+        if (requestCode == IMAGE_CAPTURE_REQUEST && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             val rotatedBitmap = rotateImage(imageBitmap, 90f)
             clienteImageView.setImageBitmap(rotatedBitmap)
-        }
-        else if (requestCode == IMAGE_PICK_REQUEST && resultCode == RESULT_OK)
-        {
+        } else if (requestCode == IMAGE_PICK_REQUEST && resultCode == RESULT_OK) {
             val selectedImageUri = data?.data
             clienteImageView.setImageURI(selectedImageUri)
         }
@@ -175,6 +179,7 @@ class RegistroClienteActivity : AppCompatActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE
         ) == PackageManager.PERMISSION_GRANTED
     }
+
     private fun requestGalleryPermission() {
         ActivityCompat.requestPermissions(
             this,

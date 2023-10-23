@@ -50,6 +50,13 @@
             android:text="Solicitar Corte"
             android:backgroundTint="@color/azul"
             android:textColor="@color/blanco"/>
+        <Button
+            android:id="@+id/verOfertas"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="Ver ofertas"
+            android:backgroundTint="@color/azul"
+            android:textColor="@color/blanco"/>
 
         <Button
             android:id="@+id/verPeluqueriasButton"

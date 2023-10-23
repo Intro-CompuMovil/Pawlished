@@ -23,8 +23,8 @@ class VerSolicitudesAceptadasActivity : AppCompatActivity() {
 
         val serviciosSeleccionados = intent.getStringArrayListExtra("servicios_seleccionados") ?: ArrayList()
 
-        // Crear un adaptador personalizado para mostrar los servicios con precios editables
-        val adapter = ServiciosAceptadosAdapter(this, serviciosSeleccionados)
+        // Crear un adaptador para mostrar los elementos seleccionados
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, serviciosSeleccionados)
         serviciosAceptadosListView.adapter = adapter
 
         volverMainButton.setOnClickListener {
@@ -34,9 +34,7 @@ class VerSolicitudesAceptadasActivity : AppCompatActivity() {
         }
 
         guardarPreciosButton.setOnClickListener {
-            // Guardar los precios propuestos aquí
-            val preciosPropuestos = adapter.getPreciosPropuestos()
-            // se pueden procesar los precios propuestos aquí
+            // Puedes procesar los precios propuestos aquí si es necesario
         }
     }
 }

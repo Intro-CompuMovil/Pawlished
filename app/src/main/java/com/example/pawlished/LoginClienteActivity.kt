@@ -9,28 +9,29 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
+
 
 class LoginClienteActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var databaseReference: DatabaseReference
+    private lateinit var db: FirebaseFirestore
     private lateinit var correoEditText: EditText
     private lateinit var contraseñaEditText: EditText
-    private  lateinit var iniciarSesionButton: Button
+    private lateinit var iniciarSesionButton: Button
     private lateinit var registrarClienteButton: Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_cliente)
 
         auth = FirebaseAuth.getInstance()
-        databaseReference = FirebaseDatabase.getInstance().reference.child("clientes")
+        db = FirebaseFirestore.getInstance()
 
-         correoEditText = findViewById(R.id.emailEditText)
+        correoEditText = findViewById(R.id.emailEditText)
         contraseñaEditText = findViewById(R.id.passwordEditText)
-         iniciarSesionButton  = findViewById(R.id.iniciarSesionButton)
-         registrarClienteButton = findViewById(R.id.registrarClienteButton)
+        iniciarSesionButton = findViewById(R.id.iniciarSesionButton)
+        registrarClienteButton = findViewById(R.id.registrarClienteButton)
 
         iniciarSesionButton.setOnClickListener {
             val correo = correoEditText.text.toString()
@@ -43,43 +44,49 @@ class LoginClienteActivity : AppCompatActivity() {
                             val user: FirebaseUser? = auth.currentUser
                             if (user != null) {
                                 val uid = user.uid
-                                val userRef = databaseReference.child(uid)
+                                val userRef = db.collection("clientes").document(uid)
 
-                                userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                                    override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                        val tipoUsuario =
-                                            dataSnapshot.child("tipoUsuario").getValue(String::class.java)
+                                userRef.get()
+                                    .addOnSuccessListener { document ->
+                                        if (document != null) {
+                                            if (document.exists()) {
+                                                val tipoUsuario = document.getString("tipoUsuario")
 
-                                        if (tipoUsuario == "Cliente") {
-                                            // Inicio de sesión exitoso para cliente, ir a MainActivityCliente
-                                            val intent =
-                                                Intent(this@LoginClienteActivity, MainActivityCliente::class.java)
-                                            startActivity(intent)
-                                            finish()
-                                        } else {
-                                            // Tipo de usuario incorrecto, mostrar mensaje y redirigir
-                                            auth.signOut() // Cerrar la sesión
-                                            Toast.makeText(
-                                                this@LoginClienteActivity,
-                                                "No tienes permiso para acceder a esta área.",
-
-                                                Toast.LENGTH_SHORT
-                                            ).show()
-                                            val intent1 = Intent(this@LoginClienteActivity, LoginPeluqueriaActivity::class.java)
-                                            startActivity(intent1)
-                                            finish()
+                                                if (tipoUsuario == "Cliente") {
+                                                    // Inicio de sesión exitoso para cliente, ir a MainActivityCliente
+                                                    val intent = Intent(this@LoginClienteActivity, MainActivityCliente::class.java)
+                                                    startActivity(intent)
+                                                    finish()
+                                                } else {
+                                                    // Tipo de usuario incorrecto, mostrar mensaje y redirigir
+                                                    auth.signOut() // Cerrar la sesión
+                                                    Toast.makeText(
+                                                        this@LoginClienteActivity,
+                                                        "No tienes permiso para acceder a esta área.",
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
+                                                    val intent1 = Intent(this@LoginClienteActivity, LoginPeluqueriaActivity::class.java)
+                                                    startActivity(intent1)
+                                                    finish()
+                                                }
+                                            } else {
+                                                // El documento no existe, lo que significa que el usuario no está en Firestore
+                                                Toast.makeText(
+                                                    this@LoginClienteActivity,
+                                                    "El usuario no existe.",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
                                         }
                                     }
-
-                                    override fun onCancelled(databaseError: DatabaseError) {
-                                        // Manejar errores de base de datos aquí
+                                    .addOnFailureListener { e ->
+                                        // Manejar errores de Firestore aquí
                                         Toast.makeText(
                                             this@LoginClienteActivity,
-                                            "Error al acceder a la base de datos.",
+                                            "Error al acceder a Firestore: $e",
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
-                                })
                             }
                         } else {
                             // El inicio de sesión falló, mostrar un mensaje de error

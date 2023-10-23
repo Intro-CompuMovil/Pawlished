@@ -23,6 +23,9 @@
         android:theme="@style/Theme.Pawlished"
         tools:targetApi="34">
         <activity
+            android:name=".VerOfertasActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsActivityP"
             android:exported="false" />
         <activity

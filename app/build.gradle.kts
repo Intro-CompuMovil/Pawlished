@@ -43,6 +43,10 @@ android {
 dependencies {
     implementation ("com.google.firebase:firebase-auth:21.0.1")
     implementation ("com.google.firebase:firebase-database:20.0.2")
+    implementation ("com.google.firebase:firebase-firestore:23.0.3")
+    implementation ("com.firebaseui:firebase-ui-database:7.1.1")
+    implementation ("androidx.core:core-ktx:1.6.0")
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")

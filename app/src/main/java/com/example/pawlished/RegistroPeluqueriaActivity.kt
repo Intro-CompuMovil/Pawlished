@@ -15,7 +15,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistroPeluqueriaActivity : AppCompatActivity() {
     companion object {
@@ -35,7 +35,7 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
     private lateinit var registrarPeluqueriaButton: Button
 
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var mDatabase: FirebaseDatabase
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
         registrarPeluqueriaButton = findViewById(R.id.registroButton)
 
         mAuth = FirebaseAuth.getInstance()
-        mDatabase = FirebaseDatabase.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         tomarFotoButton.setOnClickListener {
             if (checkCameraPermission()) {
@@ -88,25 +88,34 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
                     // La peluquería se registró correctamente en Firebase Authentication
                     val peluqueriaId = mAuth.currentUser?.uid
 
-                    // Crear un nodo para la peluquería en la base de datos
-                    val peluqueriaRef = peluqueriaId?.let { it1 ->
-                        mDatabase.reference.child("peluquerias").child(it1)
-                    }
-                    val peluqueriaData = HashMap<String, Any>()
-                    peluqueriaData["correo"] = correo
-                    peluqueriaData["nombre"] = nombre
-                    peluqueriaData["tipoUsuario"] = "Peluqueria"
-                    peluqueriaData["numeroTelefono"] = telefono
+                    // Crear un documento para la peluquería en Firebase Firestore
+                    peluqueriaId?.let {
+                        val peluqueriaData = hashMapOf(
+                            "correo" to correo,
+                            "nombre" to nombre,
+                            "tipoUsuario" to "Peluqueria",
+                            "numeroTelefono" to telefono
+                        )
 
-                    // Guardar los datos de la peluquería en la base de datos
-                    if (peluqueriaRef != null) {
-                        peluqueriaRef.setValue(peluqueriaData)
+                        db.collection("peluquerias")
+                            .document(it)
+                            .set(peluqueriaData)
+                            .addOnSuccessListener {
+                                // Registro exitoso en Firestore
+                                // Redirigir a la peluquería a la actividad principal de peluquerías
+                                val intent = Intent(this, MainActivityPeluqueria::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            .addOnFailureListener { e ->
+                                // Manejar errores de Firestore aquí
+                                Toast.makeText(
+                                    this@RegistroPeluqueriaActivity,
+                                    "Error al registrar en Firestore: $e",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                     }
-
-                    // Redirigir a la peluquería a la actividad principal de peluquerías
-                    val intent = Intent(this, MainActivityPeluqueria::class.java)
-                    startActivity(intent)
-                    finish()
                 } else {
                     // Hubo un error al registrar la peluquería en Firebase Authentication
                     // Manejar el error apropiadamente
