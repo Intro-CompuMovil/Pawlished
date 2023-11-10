@@ -7,5 +7,6 @@ data class Solicitud(
     val descripcion: String,
     val servicios: List<String>,
     val numero: String,
+    val precio: Double // Campo para el precio
 
 )

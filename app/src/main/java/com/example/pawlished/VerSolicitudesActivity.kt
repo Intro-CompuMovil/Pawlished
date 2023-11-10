@@ -3,7 +3,6 @@ package com.example.pawlished
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.CheckBox
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
@@ -27,8 +26,7 @@ class VerSolicitudesActivity : AppCompatActivity() {
         listView = findViewById(R.id.serviciosSolicitadosListView)
         databaseReference = FirebaseDatabase.getInstance().reference.child("Solicitudes")
 
-        solicitudAdapter = SolicitudAdapter(this, R.layout.item_solicitud,solicitudesSeleccionadas)
-
+        solicitudAdapter = SolicitudAdapter(this, R.layout.item_solicitud, solicitudesSeleccionadas)
 
         listView.adapter = solicitudAdapter
         listView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
@@ -42,19 +40,12 @@ class VerSolicitudesActivity : AppCompatActivity() {
         }
 
         verAceptadasButton.setOnClickListener {
-            // Obtén los elementos seleccionados
-            solicitudesSeleccionadas.clear()
-            for (i in 0 until listView.count) {
-                if (listView.isItemChecked(i)) {
-                    solicitudesSeleccionadas.add(solicitudAdapter.getItem(i) ?: Solicitud("","", "", emptyList(),""))
-                }
-            }
-
-            // Pasa los elementos seleccionados a VerSolicitudesAceptadasActivity
+            // Código existente para manejar el evento click del botón verAceptadasButton
             val intent = Intent(this, VerSolicitudesAceptadasActivity::class.java)
-            val solicitudesSeleccionadasStrings = solicitudesSeleccionadas.map { it.direccion }
-            intent.putStringArrayListExtra("solicitudes_seleccionadas", ArrayList(solicitudesSeleccionadasStrings))
+            intent.putExtra("solicitudes_seleccionadas", ArrayList(solicitudesSeleccionadas))
             startActivity(intent)
+            finish()
+
         }
     }
 
@@ -67,6 +58,7 @@ class VerSolicitudesActivity : AppCompatActivity() {
                     val direccion = childSnapshot.child("direccion").getValue(String::class.java)
                     val descripcion = childSnapshot.child("description").getValue(String::class.java)
                     val numero = childSnapshot.child("userPhoneNumber").getValue(String::class.java)
+                    val precio = childSnapshot.child("precio").getValue(Double::class.java) ?: 0.0
                     val id = childSnapshot.key
 
                     if (estado == "Disponible" && !direccion.isNullOrBlank()) {
@@ -78,17 +70,20 @@ class VerSolicitudesActivity : AppCompatActivity() {
                             }
                         }
 
-                        solicitudes.add(Solicitud(id?: "",direccion ?: "", descripcion ?: "", servicios,numero?:""))
+                        solicitudes.add(Solicitud(id ?: "", direccion ?: "", descripcion ?: "", servicios, numero ?: "", precio ?: 0.0))
                     }
                 }
+
+                // Ordenar las solicitudes por precio de menor a mayor
+                val solicitudesOrdenadas = solicitudes.sortedBy { it.precio }
+
                 solicitudAdapter.clear()
-                solicitudAdapter.addAll(solicitudes)
+                solicitudAdapter.addAll(solicitudesOrdenadas)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Maneja errores si es necesario
+                // Manejar errores si es necesario
             }
         })
     }
 }
-
