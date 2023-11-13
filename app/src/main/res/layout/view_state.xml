@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp"
-        android:text="Peluquerias seleccionada"
+        android:text="Peluqueria seleccionada"
         android:textColor="@color/azul"
         android:textSize="22dp"
         android:textStyle="bold"
