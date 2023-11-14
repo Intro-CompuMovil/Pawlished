@@ -44,17 +44,7 @@ Al darle click al botón de "Solicitar corte" nos llevara a una nueva pantalla d
 
 <sub> Solicitud de servicio </sub>
 
-Posteriormente se le debe dar al botón de "Solicitar" para que se envie la solicitud a las peluquerías cercanas, donde podremos seleccionar la que mas nos guste. En esta pantalla tenemos un botón para ver las peluquerías en el mapa, donde tu ubicación es el marcador rojo y las peluquerías son los marcadores verdes, tambien dandole click sobre estos marcadores veremos la ruta hasta el lugar y nos brindara informacion como la distancia y el tiempo que tardamos en llegar.
-
-<img src="Imagenes/1_4_2.png" width="270" height="600"> <img src="Imagenes/1_4_3.png" width="270" height="600">
-
-<sub> Lista de peluquerías cercanas y sus ubicaciones en el mapa </sub>
-
-Finalmente en esta pantalla veremos la peluquería que seleccionamos y los detalles de nuestra solicitud.
-
-<img src="Imagenes/1_4_4.png" width="270" height="600">
-
-<sub> Peluquería seleccionada y detalles de solicitud </sub>
+Posteriormente se le debe dar al botón de "Solicitar" para que se envie la solicitud a las peluquerías cercanas y volvemos al menu principal.
 
 ### Ver ofertas 📩
 
@@ -63,6 +53,12 @@ Al darle click en el botón "Ver ofertas" podremos ver las ofertas que nos han e
 <img src="Imagenes/1_5.png" width="270" height="600">
 
 <sub> Ofertas de peluquerías </sub>
+
+Finalmente en esta pantalla veremos la peluquería que seleccionamos y los detalles de nuestra solicitud.
+
+<img src="Imagenes/1_4_4.png" width="270" height="600">
+
+<sub> Peluquería seleccionada y detalles de solicitud </sub>
 
 ### Ver peluquerías cercanas 📍
 
