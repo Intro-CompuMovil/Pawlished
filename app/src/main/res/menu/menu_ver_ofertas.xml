@@ -7,11 +7,8 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/sort_asc"
-                    android:title="De menor a mayor" />
-                <item
                     android:id="@+id/sort_desc"
-                    android:title="De mayor a menor" />
+                    android:title="Invertir orden" />
             </group>
         </menu>
     </item>

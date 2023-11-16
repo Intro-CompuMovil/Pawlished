@@ -57,10 +57,6 @@ class VerOfertasActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.sort_asc -> {
-                sortOffersByPrice(true)
-                return true
-            }
             R.id.sort_desc -> {
                 sortOffersByPrice(false)
                 return true
