@@ -59,7 +59,7 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-
+        storage = FirebaseStorage.getInstance()
         tomarFotoButton.setOnClickListener {
             if (checkCameraPermission()) {
                 launchCamera()
@@ -208,19 +208,30 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
     }
     private fun uploadProfileImageToStorage(userId: String) {
         val storageReference = storage.reference.child("profile_images").child(userId)
-        val imageBitmap = (peluqueriaImageView.drawable as BitmapDrawable).bitmap
 
-        val baos = ByteArrayOutputStream()
-        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val data = baos.toByteArray()
+        // Verifica que la ImageView tenga una imagen asignada y sea un BitmapDrawable válido
+        if (peluqueriaImageView.drawable != null && peluqueriaImageView.drawable is BitmapDrawable) {
+            val imageBitmap = (peluqueriaImageView.drawable as BitmapDrawable).bitmap
 
-        storageReference.putBytes(data)
-            .addOnSuccessListener {
-                // Subida exitosa
-            }
-            .addOnFailureListener {
-                // Manejar el error en caso de falla
-            }
+            val baos = ByteArrayOutputStream()
+            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+            val data = baos.toByteArray()
+
+            storageReference.putBytes(data)
+                .addOnSuccessListener {
+                    // Subida exitosa
+                }
+                .addOnFailureListener {
+                    // Manejar el error en caso de falla
+                }
+        } else {
+            // Si la imagen no es válida, muestra un mensaje de error o maneja la lógica según sea necesario
+            Toast.makeText(
+                this@RegistroPeluqueriaActivity,
+                "La imagen seleccionada no es válida",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
 }
