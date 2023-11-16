@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Matrix
+import android.graphics.drawable.BitmapDrawable
 import android.provider.MediaStore
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
@@ -13,9 +14,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.storage.FirebaseStorage
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.io.ByteArrayOutputStream
 
 class RegistroClienteActivity : AppCompatActivity() {
     companion object {
@@ -30,6 +33,7 @@ class RegistroClienteActivity : AppCompatActivity() {
     private lateinit var nombreEditText: EditText
     private lateinit var telefonoEditText: EditText
     private lateinit var contraseñaEditText: EditText
+    private lateinit var storage: FirebaseStorage
     private lateinit var tomarFotoButton: Button
     private lateinit var elegirImagenButton: Button
     private lateinit var registrarClienteButton: Button
@@ -73,6 +77,8 @@ class RegistroClienteActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // El cliente se registró correctamente en Firebase Authentication
                     val clienteId = mAuth.currentUser?.uid
+                    uploadProfileImageToStorage(clienteId!!)
+
 
                     // Crear un documento para el cliente en Firebase Firestore
                     clienteId?.let {
@@ -196,4 +202,22 @@ class RegistroClienteActivity : AppCompatActivity() {
         matrix.postRotate(angle)
         return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
     }
+
+    private fun uploadProfileImageToStorage(userId: String) {
+        val storageReference = storage.reference.child("profile_images").child(userId)
+        val imageBitmap = (clienteImageView.drawable as BitmapDrawable).bitmap
+
+        val baos = ByteArrayOutputStream()
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        storageReference.putBytes(data)
+            .addOnSuccessListener {
+                // Subida exitosa
+            }
+            .addOnFailureListener {
+                // Manejar el error en caso de falla
+            }
+    }
+
 }

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Matrix
+import android.graphics.drawable.BitmapDrawable
 import android.provider.MediaStore
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
@@ -16,6 +17,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
 
 class RegistroPeluqueriaActivity : AppCompatActivity() {
     companion object {
@@ -24,6 +27,8 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
         private const val GALLERY_PERMISSION_REQUEST = 103
         private const val IMAGE_PICK_REQUEST = 104
     }
+
+    private lateinit var storage: FirebaseStorage
 
     private lateinit var peluqueriaImageView: ImageView
     private lateinit var correoEditText: EditText
@@ -87,7 +92,7 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     // La peluquería se registró correctamente en Firebase Authentication
                     val peluqueriaId = mAuth.currentUser?.uid
-
+                         uploadProfileImageToStorage(peluqueriaId!!)
                     // Crear un documento para la peluquería en Firebase Firestore
                     peluqueriaId?.let {
                         val peluqueriaData = hashMapOf(
@@ -201,4 +206,21 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
         matrix.postRotate(angle)
         return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
     }
+    private fun uploadProfileImageToStorage(userId: String) {
+        val storageReference = storage.reference.child("profile_images").child(userId)
+        val imageBitmap = (peluqueriaImageView.drawable as BitmapDrawable).bitmap
+
+        val baos = ByteArrayOutputStream()
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val data = baos.toByteArray()
+
+        storageReference.putBytes(data)
+            .addOnSuccessListener {
+                // Subida exitosa
+            }
+            .addOnFailureListener {
+                // Manejar el error en caso de falla
+            }
+    }
+
 }
