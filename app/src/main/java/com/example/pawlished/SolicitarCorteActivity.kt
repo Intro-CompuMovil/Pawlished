@@ -126,7 +126,7 @@ class SolicitarCorteActivity : AppCompatActivity() {
                                 solicitudReference.child(solicitudKey).setValue(solicitudData)
                             }
 
-                            val intent = Intent(this, ViewNearestActivity::class.java)
+                            val intent = Intent(this, MainActivityCliente::class.java)
                             intent.putStringArrayListExtra("servicios_seleccionados", ArrayList(serviciosSeleccionados))
                             startActivity(intent)
                         } else {

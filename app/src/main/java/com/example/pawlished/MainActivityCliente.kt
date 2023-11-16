@@ -16,6 +16,7 @@ class MainActivityCliente : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_cliente)
+        val serviciosSeleccionados = intent.getStringArrayListExtra("servicios_seleccionados")
         val solicitarCorteButton: Button = findViewById(R.id.solicitarCorteButton)
         val verOfertasButton: Button = findViewById(R.id.verOfertas)
         val verPeluqueriasButton: Button = findViewById(R.id.verPeluqueriasButton)
@@ -31,6 +32,7 @@ class MainActivityCliente : AppCompatActivity() {
 
          verOfertasButton.setOnClickListener{
              val intent = Intent(this, VerOfertasActivity::class.java)
+             intent.putStringArrayListExtra("servicios_seleccionados", serviciosSeleccionados)
              startActivity(intent)
          }
         verPeluqueriasButton.setOnClickListener {

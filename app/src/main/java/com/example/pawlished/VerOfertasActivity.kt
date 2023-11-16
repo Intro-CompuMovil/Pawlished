@@ -1,5 +1,6 @@
 package com.example.pawlished
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -14,6 +15,7 @@ class VerOfertasActivity : AppCompatActivity() {
     private lateinit var ofertasListView: ListView
     private lateinit var ofertasAdapter: ArrayAdapter<String>
     private lateinit var userId: String
+    private var serviciosSeleccionados: ArrayList<String>? = null // Variable para almacenar los servicios seleccionados
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,8 @@ class VerOfertasActivity : AppCompatActivity() {
 
         userId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
 
+        serviciosSeleccionados = intent.getStringArrayListExtra("servicios_seleccionados")
+
         // Inicializa el adaptador para mostrar las ofertas
         ofertasAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1)
         ofertasListView.adapter = ofertasAdapter
@@ -31,8 +35,12 @@ class VerOfertasActivity : AppCompatActivity() {
         cargarOfertas()
 
         volverMainButton.setOnClickListener {
-            // Regresar a la actividad principal
             finish()
+        }
+
+        ofertasListView.setOnItemClickListener { _, _, position, _ ->
+            val selectedOffer = ofertasAdapter.getItem(position)
+            startViewStateActivity(selectedOffer)
         }
     }
 
@@ -52,7 +60,6 @@ class VerOfertasActivity : AppCompatActivity() {
                     val peluqueria = ofertaSnapshot.child("Peluqueria").getValue(String::class.java)
                     val estado = ofertaSnapshot.child("Estado").getValue(String::class.java)
 
-                    // Realiza la consulta para obtener el `userId` de la solicitud
                     val solicitudQuery = solicitudesReference.orderByKey().equalTo(solicitudId)
                     solicitudQuery.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(solicitudSnapshot: DataSnapshot) {
@@ -60,9 +67,7 @@ class VerOfertasActivity : AppCompatActivity() {
                                 val userIdSolicitud =
                                     solicitudId?.let { solicitudSnapshot.child(it).child("userId").getValue(String::class.java) }
 
-                                // Comprueba si el `userId` coincide con el del usuario actual
                                 if (userIdSolicitud == userId) {
-                                    // Agrega la oferta a la lista de ofertas
                                     val ofertaStr = "Solicitud ID: $solicitudId, Precio: $precio, Peluqueria: $peluqueria, Estado: $estado"
                                     ofertasAdapter.add(ofertaStr)
                                 }
@@ -81,4 +86,18 @@ class VerOfertasActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun startViewStateActivity(selectedOffer: String?) {
+        val intent = Intent(this, ViewStateActivity::class.java)
+        intent.putStringArrayListExtra("servicios_seleccionados", serviciosSeleccionados)
+
+        // Extracción del nombre de la peluquería del texto seleccionado
+        val lines = selectedOffer?.split("\n")
+        val selectedPeluqueria = lines?.get(1) // Suponiendo que el nombre de la peluquería está en la segunda línea
+        intent.putExtra("selected-peluqueria", selectedPeluqueria)
+
+        intent.putExtra("selected_offer", selectedOffer)
+        startActivity(intent)
+    }
 }
+
