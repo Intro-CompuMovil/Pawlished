@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
@@ -34,8 +35,8 @@ class MainActivityCliente : AppCompatActivity() {
 
 
          verOfertasButton.setOnClickListener{
-             car
-         }
+             cargarSolicitudes()
+
              val intent = Intent(this, VerOfertasActivity::class.java)
              intent.putStringArrayListExtra("servicios_seleccionados", serviciosSeleccionados)
              startActivity(intent)
@@ -44,8 +45,33 @@ class MainActivityCliente : AppCompatActivity() {
             val intent = Intent(this, VerPeluqueriasActivity::class.java)
             startActivity(intent)
         }
+
     }
 
+    private fun cargarSolicitudes() {
+        val databaseReference = FirebaseDatabase.getInstance().reference
+        val solicitudesReference = databaseReference.child("Solicitudes")
+
+        solicitudesReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Itera sobre todas las solicitudes
+                for (solicitudSnapshot in dataSnapshot.children) {
+                    // Itera sobre los servicios en la solicitud actual
+                    for (i in 0 until solicitudSnapshot.childrenCount) {
+                        val servicio = solicitudSnapshot.child("servicio$i").getValue(String::class.java)
+                        if (servicio != null && !serviciosSeleccionados.contains(servicio)) {
+                            // Agrega el servicio a la lista si no está presente
+                            serviciosSeleccionados.add(servicio)
+                        }
+                    }
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Manejo de errores si es necesario
+            }
+        })
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
         return true
@@ -71,20 +97,7 @@ class MainActivityCliente : AppCompatActivity() {
         }
     }
 
-    private fun cargarSolicitudes() {
-        val databaseReference = FirebaseDatabase.getInstance().reference
-        val solicitudesReference = databaseReference.child("Solicitudes")
+    }
 
-        solicitudesReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Itera sobre todas las solicitudes
-                for (solicitudSnapshot in dataSnapshot.children) {
-                    // Itera sobre los servicios en la solicitud actual
-                    for (i in 0 until solicitudSnapshot.childrenCount) {
-                        val servicio = solicitudSnapshot.child("servicio$i").getValue(String::class.java)
-                        if (servicio != null && !serviciosSeleccionados.contains(servicio)) {
-                            // Agrega el servicio a la lista si no está presente
-                            serviciosSeleccionados.add(servicio)
-                        }
-                    }
-}
+
+
