@@ -207,7 +207,7 @@ class RegistroPeluqueriaActivity : AppCompatActivity() {
         return Bitmap.createBitmap(source, 0, 0, source.width, source.height, matrix, true)
     }
     private fun uploadProfileImageToStorage(userId: String) {
-        val storageReference = storage.reference.child("profile_images").child(userId)
+        val storageReference = storage.reference.child("peluquerias_images").child(userId)
 
         // Verifica que la ImageView tenga una imagen asignada y sea un BitmapDrawable válido
         if (peluqueriaImageView.drawable != null && peluqueriaImageView.drawable is BitmapDrawable) {

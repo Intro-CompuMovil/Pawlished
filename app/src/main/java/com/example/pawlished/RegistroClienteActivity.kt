@@ -206,7 +206,7 @@ class RegistroClienteActivity : AppCompatActivity() {
     }
 
     private fun uploadProfileImageToStorage(userId: String) {
-        val storageReference = storage.reference.child("profile_images").child(userId)
+        val storageReference = storage.reference.child("clientes_images").child(userId)
 
         // Verifica que la ImageView tenga una imagen asignada y sea un BitmapDrawable válido
         if (clienteImageView.drawable != null && clienteImageView.drawable is BitmapDrawable) {
