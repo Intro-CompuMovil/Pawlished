@@ -39,6 +39,7 @@ class LoginClienteActivity : AppCompatActivity() {
 
             if (correo.isNotEmpty() && contraseña.isNotEmpty()) {
                 auth.signInWithEmailAndPassword(correo, contraseña)
+
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user: FirebaseUser? = auth.currentUser
