@@ -16,7 +16,7 @@ class ViewStateActivity : AppCompatActivity() {
 
         // Obtén los servicios seleccionados y la peluquería seleccionada
         val serviciosSeleccionados = intent.getStringArrayListExtra("servicios_seleccionados")
-        val selectedPeluqueria = intent.getStringExtra("selected_peluqueria")
+        val selectedPeluqueria = intent.getStringExtra("selected-peluqueria")
 
         // Convierte la lista de servicios seleccionados a mutable
         val serviciosMutable = serviciosSeleccionados?.toMutableList() ?: mutableListOf()

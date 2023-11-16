@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import android.util.Log
 
 class VerOfertasActivity : AppCompatActivity() {
 
@@ -115,10 +116,12 @@ class VerOfertasActivity : AppCompatActivity() {
         intent.putStringArrayListExtra("servicios_seleccionados", serviciosSeleccionados)
 
         // Extracción del nombre de la peluquería del texto seleccionado
-        val lines = selectedOffer?.split("\n")
-        val selectedPeluqueria = lines?.get(1) // Suponiendo que el nombre de la peluquería está en la segunda línea
-        intent.putExtra("selected-peluqueria", selectedPeluqueria)
-
+        val lines = selectedOffer.toString().split(",")
+        val selectedPeluqueria = lines?.get(2)
+        intent.putExtra("selected-peluqueria", selectedPeluqueria.toString())
+        val mensaje= selectedOffer.toString()
+        Log.d("SelectedOffer",mensaje)
+        Log.d("SelectedOffer",selectedPeluqueria.toString())
         intent.putExtra("selected_offer", selectedOffer)
         startActivity(intent)
     }
