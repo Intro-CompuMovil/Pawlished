@@ -17,6 +17,7 @@ class VerOfertasActivity : AppCompatActivity() {
     private lateinit var userId: String
     private var serviciosSeleccionados: ArrayList<String>? = null // Variable para almacenar los servicios seleccionados
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_ofertas)

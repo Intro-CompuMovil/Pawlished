@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener
 class MainActivityCliente : AppCompatActivity() {
     private val serviciosSeleccionados: ArrayList<String> = ArrayList()
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var currentUserID: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,8 @@ class MainActivityCliente : AppCompatActivity() {
         val toolbar= findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         mAuth = FirebaseAuth.getInstance()
-         cargarSolicitudes()
+        currentUserID = mAuth.currentUser?.uid ?: ""
+        cargarSolicitudes()
         solicitarCorteButton.setOnClickListener {
             val intent = Intent(this, SolicitarCorteActivity::class.java)
             startActivity(intent)
@@ -56,12 +58,15 @@ class MainActivityCliente : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Itera sobre todas las solicitudes
                 for (solicitudSnapshot in dataSnapshot.children) {
-                    // Itera sobre los servicios en la solicitud actual
-                    for (i in 0 until solicitudSnapshot.childrenCount) {
-                        val servicio = solicitudSnapshot.child("servicio$i").getValue(String::class.java)
-                        if (servicio != null && !serviciosSeleccionados.contains(servicio)) {
-                            // Agrega el servicio a la lista si no está presente
-                            serviciosSeleccionados.add(servicio)
+                    val userId = solicitudSnapshot.child("userId").getValue(String::class.java)
+                    if(userId == currentUserID) {
+                        for (i in 0 until solicitudSnapshot.childrenCount) {
+                            val servicio =
+                                solicitudSnapshot.child("servicio$i").getValue(String::class.java)
+                            if (servicio != null && !serviciosSeleccionados.contains(servicio)) {
+                                // Agrega el servicio a la lista si no está presente
+                                serviciosSeleccionados.add(servicio)
+                            }
                         }
                     }
                 }
