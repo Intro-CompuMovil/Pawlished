@@ -34,7 +34,7 @@ class VerSolicitudesAceptadasActivity : AppCompatActivity() {
         }
 
         guardarPreciosButton.setOnClickListener {
-            // Puedes procesar los precios propuestos aquí si es necesario
+            TODO()
         }
     }
 }

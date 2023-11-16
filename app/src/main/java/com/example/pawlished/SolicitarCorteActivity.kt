@@ -127,7 +127,7 @@ class SolicitarCorteActivity : AppCompatActivity() {
                             }
 
                             val intent = Intent(this, MainActivityCliente::class.java)
-                            intent.putStringArrayListExtra("servicios_seleccionados", ArrayList(serviciosSeleccionados))
+
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, "No se pudo obtener el número de teléfono", Toast.LENGTH_SHORT).show()
