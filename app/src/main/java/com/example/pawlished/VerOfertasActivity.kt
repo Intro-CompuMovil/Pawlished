@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -23,6 +24,8 @@ class VerOfertasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ver_ofertas)
 
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
         volverMainButton = findViewById(R.id.volverMainButton)
         ofertasListView = findViewById(R.id.ofertasListView)
 
@@ -54,12 +57,10 @@ class VerOfertasActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.sort_asc -> {
-
                 sortOffersByPrice(true)
                 return true
             }
             R.id.sort_desc -> {
-                // Ordenar de mayor a menor
                 sortOffersByPrice(false)
                 return true
             }
@@ -87,10 +88,9 @@ class VerOfertasActivity : AppCompatActivity() {
                     solicitudQuery.addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(solicitudSnapshot: DataSnapshot) {
                             if (solicitudSnapshot.childrenCount > 0) {
-                                val userIdSolicitud =
-                                    solicitudId?.let { solicitudSnapshot.child(it).child("userId").getValue(String::class.java) }
+                                val userIdSolicitud = solicitudId?.let { solicitudSnapshot.child(it).child("userId").getValue(String::class.java) }
 
-                                if (userIdSolicitud == userId) {
+                                if (userIdSolicitud == userId && solicitudId != null && precio != null && peluqueria != null && estado != null) {
                                     val ofertaStr = "Solicitud ID: $solicitudId, Precio: $precio, Peluqueria: $peluqueria, Estado: $estado"
                                     ofertasAdapter.add(ofertaStr)
                                 }
@@ -130,15 +130,11 @@ class VerOfertasActivity : AppCompatActivity() {
         }
 
         val sortedOffers = offersList.sortedBy {
-            it.substringAfter("Precio:").trim().toInt()
+            it.substringAfter("Precio:").trim().toIntOrNull() ?: 0
         }
 
         val orderedOffers = if (ascending) sortedOffers else sortedOffers.reversed()
         ofertasAdapter.clear()
         ofertasAdapter.addAll(orderedOffers)
     }
-
-
 }
-
-
