@@ -2,6 +2,8 @@ package com.example.pawlished
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -16,7 +18,6 @@ class VerOfertasActivity : AppCompatActivity() {
     private lateinit var ofertasAdapter: ArrayAdapter<String>
     private lateinit var userId: String
     private var serviciosSeleccionados: ArrayList<String>? = null // Variable para almacenar los servicios seleccionados
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,27 @@ class VerOfertasActivity : AppCompatActivity() {
         ofertasListView.setOnItemClickListener { _, _, position, _ ->
             val selectedOffer = ofertasAdapter.getItem(position)
             startViewStateActivity(selectedOffer)
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_ver_ofertas, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.sort_asc -> {
+
+                sortOffersByPrice(true)
+                return true
+            }
+            R.id.sort_desc -> {
+                // Ordenar de mayor a menor
+                sortOffersByPrice(false)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
     }
 
@@ -100,5 +122,23 @@ class VerOfertasActivity : AppCompatActivity() {
         intent.putExtra("selected_offer", selectedOffer)
         startActivity(intent)
     }
+
+    private fun sortOffersByPrice(ascending: Boolean) {
+        val offersList = ArrayList<String>()
+        for (i in 0 until ofertasAdapter.count) {
+            offersList.add(ofertasAdapter.getItem(i) ?: "")
+        }
+
+        val sortedOffers = offersList.sortedBy {
+            it.substringAfter("Precio:").trim().toInt()
+        }
+
+        val orderedOffers = if (ascending) sortedOffers else sortedOffers.reversed()
+        ofertasAdapter.clear()
+        ofertasAdapter.addAll(orderedOffers)
+    }
+
+
 }
+
 
